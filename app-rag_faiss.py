@@ -5,9 +5,7 @@ from langchain.text_splitter import CharacterTextSplitter
 from langchain_community.vectorstores import FAISS
 from langchain.memory import ConversationBufferMemory
 from langchain.chains import ConversationalRetrievalChain
-#from langchain.embeddings import HuggingFaceInstructEmbeddings
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
-#from langchain_huggingface.embeddings import HuggingFaceEmbeddings
 from langchain_google_genai import GoogleGenerativeAI
 from langchain.prompts.chat import SystemMessagePromptTemplate,HumanMessagePromptTemplate
 from langchain.prompts import  ChatPromptTemplate
@@ -33,12 +31,12 @@ def get_embeddings(chunks):
     model_name = "models/embedding-001"
     model_kwargs = {'device': 'cpu'}
     encode_kwargs = {'normalize_embeddings': True}
-    embeddings =  GoogleGenerativeAIEmbeddings(model=model_name,google_api_key="AIzaSyCPxAO8gzbSYmQwk3bIbTpy_CKzqkSec00")
+    embeddings =  GoogleGenerativeAIEmbeddings(model=model_name,google_api_key="******")# Insert API Key here(**)
     vector_storage = FAISS.from_texts(texts=chunks, embedding=embeddings)
     return vector_storage
 
 def start_conversation(vector_embeddings):
-    llm = GoogleGenerativeAI(model="gemini-pro", google_api_key="AIzaSyCPxAO8gzbSYmQwk3bIbTpy_CKzqkSec00")
+    llm = GoogleGenerativeAI(model="gemini-pro", google_api_key="*******")# Insert API Key here(**)
     memory = ConversationBufferMemory(
         memory_key='chat_history',
         return_messages=True

@@ -9,7 +9,7 @@ from langchain_google_genai import GoogleGenerativeAI
 st.set_page_config(layout="wide")
 
 # Init langchain
-llm = GoogleGenerativeAI(model="gemini-pro", google_api_key="AIzaSyCPxAO8gzbSYmQwk3bIbTpy_CKzqkSec00")
+llm = GoogleGenerativeAI(model="gemini-pro", google_api_key="****")# Insert API Key here(**)
 output_parser = StrOutputParser()
 prompt = ChatPromptTemplate.from_messages(
     [("system", "You are a very helpful assistant"),
@@ -22,7 +22,7 @@ if "content" not in st.session_state:
     st.session_state.content = ""
 
 def main_page():
-    st.header("📗 Chat with PDF")
+    st.header("Chat with PDF")
 
     uploaded_file = st.file_uploader("Choose a PDF", type="pdf")
 
